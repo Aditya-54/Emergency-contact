@@ -1,7 +1,11 @@
 // Function to handle emergency button click
 function handleEmergency() {
-    // Call emergency services
-    window.location.href = "tel:8450076426";
+    // Display a prompt to the user
+    var confirmCall = confirm("Are you sure you want to call the emergency number 8450076426?");
+    // If the user confirms, open the dial pad with the number filled in
+    if (confirmCall) {
+        window.location.href = "tel:8450076426";
+    }
     // Get user's current location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -14,17 +18,3 @@ function handleEmergency() {
         console.error("Geolocation is not supported by this browser.");
     }
 }
-
-// Function to handle emergency contact form submission
-function addEmergencyContact(event) {
-    event.preventDefault();
-    var contactName = document.getElementById("contactName").value;
-    var contactNumber = document.getElementById("contactNumber").value;
-    var relationship = document.getElementById("relationship").value;
-    // Store contact information (you can implement this as needed)
-    console.log("Contact Name: " + contactName + ", Contact Number: " + contactNumber + ", Relationship: " + relationship);
-}
-
-// Add event listeners
-document.getElementById("emergencyButton").addEventListener("click", handleEmergency);
-document.getElementById("emergencyContactForm").addEventListener("submit", addEmergencyContact);
